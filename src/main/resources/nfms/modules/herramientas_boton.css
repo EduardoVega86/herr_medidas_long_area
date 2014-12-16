@@ -1,0 +1,9 @@
+#toggle_herramientas {
+	z-index: 2000;
+	top: 50px;
+	margin-right: 100px;
+	position: absolute;
+	width: 70px;
+	right: 20px;
+	margin-top: 0;
+}
