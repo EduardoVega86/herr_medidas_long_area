@@ -88,28 +88,14 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 			
 
 			btnLng1.click(function() {
-				var a = "line";
-				toggleControl(a);
+				bus.send("activate-exclusive-control", measureControls["line"]);
 			})
 			btnLng2.click(function() {
-				var a = "polygon";
-				toggleControl(a);
+				bus.send("activate-exclusive-control", measureControls["polygon"]);
 			})
 			
 
-			function toggleControl(element) {
-
-				for (key in measureControls) {
-
-					var control = measureControls[key];
-
-					if (element == key) {
-
-						control.activate();
-
-					} 
-				}
-			}
+		
 
 			divContent.attr("id", "legend_pane_content");
 			dialog.dialog({
