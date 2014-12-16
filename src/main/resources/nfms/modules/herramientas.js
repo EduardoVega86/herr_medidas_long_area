@@ -60,8 +60,9 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 		} else {
 			out += "area: " + measure.toFixed(3) + " " + units + "2";
 		}
+		
 		divContent.innerHTML = out;
-		alert(out);
+		//alert(out);
 
 	}
 
@@ -70,7 +71,7 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 			dialog = $("<div/>");
 			dialog.attr("title", "Herramientas");
 			dialog.attr("id", "legend_pane");
-			divContent = $("<div/>");
+			divContent = $("<div/>").attr("id","output");
 			divContent.appendTo(dialog);
 
 			var btnLng1 = $("<input/>").attr("type", "radio").attr("id",
