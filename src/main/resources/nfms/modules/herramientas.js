@@ -53,7 +53,7 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 		var units = event.units;
 		var order = event.order;
 		var measure = event.measure;
-		var element = document.getElementById('output');
+		var element = document.getElementById('resultado_medidas_output');
 		var out = "";
 		if (order == 1) {
 			out += "distancia: " + measure.toFixed(3) + " " + units;
@@ -61,7 +61,7 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 			out += "area: " + measure.toFixed(3) + " " + units + "2";
 		}
 		
-		divContent.innerHTML = out;
+		element.innerHTML = out;
 		//alert(out);
 
 	}
@@ -70,20 +70,26 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 		if (dialog == null) {
 			dialog = $("<div/>");
 			dialog.attr("title", "Herramientas");
-			dialog.attr("id", "legend_pane");
-			divContent = $("<div/>").attr("id","output");
+			dialog.attr("id", "herr_med_long_area_pane");
+			divContent = $("<div/>");
 			divContent.appendTo(dialog);
+			
+			
 
 			var btnLng1 = $("<input/>").attr("type", "radio").attr("id",
 					"lineToogle").attr("name", "type").appendTo(divContent);
 
 			$("<label/>").html("Calculo_Distancia").attr("id", "label")
 					.appendTo(divContent);
+			$("<br/>").appendTo(divContent);
 
 			var btnLng2 = $("<input/>").attr("type", "radio").attr("id",
 					"polygonToggle").attr("name", "type").appendTo(divContent);
 			$("<label/>").html("Calculo_Area").attr("id", "label").appendTo(
 					divContent);
+			
+			divResult = $("<div/>").attr("id","resultado_medidas_output");
+			divResult.appendTo(divContent);
 	
 
 			
@@ -98,15 +104,15 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 
 		
 
-			divContent.attr("id", "legend_pane_content");
+			divContent.attr("id", "herr_medida_lon_area_pane_content");
 			dialog.dialog({
-				position : [ 'right', 'bottom' ],
+				position : [ 'right' ],
 				closeOnEscape : false,
 				autoOpen : false,
-				height : 200,
-				minHeight : 400,
-				maxHeight : 400,
-				width : 330,
+				height : 100,
+				minHeight : 200,
+				maxHeight : 200,
+				width : 190,
 				zIndex : 2000,
 				resizable : false,
 				close : function() {
