@@ -106,7 +106,11 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 
 			divContent.attr("id", "herr_medida_lon_area_pane_content");
 			dialog.dialog({
-				position : [ 'right' ],
+				position : {
+	                my : "right top",
+	                at : "right bottom+15",
+	                of : "#toggle_herramientas"
+	            },
 				closeOnEscape : false,
 				autoOpen : false,
 				height : 100,
