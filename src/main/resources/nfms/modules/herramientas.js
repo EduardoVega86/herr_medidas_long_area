@@ -48,6 +48,7 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 		});
 		map.addControl(control);
 	}
+	
 	function handleMeasurements(event) {
 		var geometry = event.geometry;
 		var units = event.units;
@@ -55,6 +56,7 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 		var measure = event.measure;
 		var element = document.getElementById('resultado_medidas_output');
 		var out = "";
+		
 		if (order == 1) {
 			out += "distancia: " + measure.toFixed(3) + " " + units;
 		} else {
@@ -106,7 +108,11 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 
 			divContent.attr("id", "herr_medida_lon_area_pane_content");
 			dialog.dialog({
-				position : [ 'right' ],
+				position : {
+	                my : "right top",
+	                at : "right bottom+15",
+	                of : "#toggle_herramientas"
+	            },
 				closeOnEscape : false,
 				autoOpen : false,
 				height : 100,
@@ -116,6 +122,7 @@ define([ "jquery", "i18n", "customization", "message-bus", "map" ], function($,
 				zIndex : 2000,
 				resizable : false,
 				close : function() {
+					
 					bus.send("activate-default-exclusive-control");
 				}
 			});
